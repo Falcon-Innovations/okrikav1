@@ -33,6 +33,9 @@ module.exports = {
         900:"#0d0e11"
       },
     },
+    fontFamily: {
+      poppins: ["Lato", "sans-serif"],
+    },
     extend: {},
   },
   plugins: [],

@@ -1,17 +1,16 @@
-import { Dimensions } from "react-native"; 
+import { Dimensions } from "react-native";
 
 const SIZES = {
-    buttonBorderRadius: 25,
-    buttonHeight: 45,
+  buttonBorderRadius: 25,
+  buttonHeight: 45,
 
+  borderRadius: 12,
+  borderWidth: 1,
 
-    borderRadius: 12,
-    borderWidth: 1,
-    
-    screenPadding: 20,
+  screenPadding: 20,
 
-    screenWidth: Dimensions.get("window").width,
-    screenHeight: Dimensions.get("window").height,
-}
+  screenWidth: Dimensions.get("window").width,
+  screenHeight: Dimensions.get("window").height,
+};
 
-export default SIZES
+export default SIZES;

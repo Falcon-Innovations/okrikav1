@@ -3,7 +3,7 @@ import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-import { CustomButton } from "../../components/buttons";
+import { CustomButton } from "../../components";
 import { ButtonType } from "../../components/buttons/CustomButton";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { AuthStackParamList } from "../../navigation/AuthNavigation";
