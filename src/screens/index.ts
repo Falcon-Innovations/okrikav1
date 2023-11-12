@@ -1,7 +1,7 @@
 import Onboarding from "./start";
 
-import { Register } from "./auth";
+import { Register,Login } from "./auth";
 
 import { HomeScreen } from "./home";
 
-export { Onboarding, Register, HomeScreen };
+export { Onboarding, Register, HomeScreen,Login };
