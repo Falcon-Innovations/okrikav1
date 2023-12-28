@@ -1,7 +1,7 @@
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import React, { useState } from "react";
-import { CustomInput } from "../../components";
+import { CustomInput, CustomScrollView } from "../../components";
 import { SIZES } from "../../constants";
 
 const Register = () => {
@@ -14,21 +14,13 @@ const Register = () => {
   });
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <KeyboardAwareScrollView
-        extraHeight={100}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.container}
-      >
-        <View>
-          <CustomInput
-            placeholder="Full Name"
-            value={inputs?.fullName}
-            onChangeText={(text) => setInputs({ ...inputs, fullName: text })}
-          />
-        </View>
-      </KeyboardAwareScrollView>
-    </SafeAreaView>
+    <CustomScrollView>
+      <CustomInput
+        placeholder="Full Name"
+        value={inputs?.fullName}
+        onChangeText={(text) => setInputs({ ...inputs, fullName: text })}
+      />
+    </CustomScrollView>
   );
 };
 

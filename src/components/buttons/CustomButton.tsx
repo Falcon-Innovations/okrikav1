@@ -1,17 +1,11 @@
-import React, {useState} from 'react';
-import {
-  TouchableOpacity,
-  ActivityIndicator,
-  StyleSheet,
-  Text,
-} from 'react-native';
-import { SIZES } from '../../constants';
-
+import React from "react";
+import { TouchableOpacity, StyleSheet, Text } from "react-native";
+import { SIZES } from "../../constants/styles";
 
 export enum ButtonType {
-  SOLID = 'solid',
-  OUTLINED = 'outlined',
-  TEXT = 'text',
+  SOLID = "solid",
+  OUTLINED = "outlined",
+  TEXT = "text",
 }
 
 type ButtonProps = {
@@ -61,22 +55,24 @@ const AppButton: React.FC<ButtonProps> = ({
         onPress={onPress}
         style={[
           styles.button,
-          {height: btnHeight, width: btnWidth},
+          { height: btnHeight, width: btnWidth },
           type === ButtonType.SOLID
-            ? [styles.solid, {backgroundColor: backGroundColor}]
+            ? [styles.solid, { backgroundColor: backGroundColor }]
             : type === ButtonType.OUTLINED
-              ? [{borderColor: borderColors}, styles.outlined]
-              : [styles.text, {backgroundColor: backGroundColor}],
-          loading && [{backgroundColor: backGroundColor}],
-          disabled && [styles.disabled, {backgroundColor: backGroundColor}],
+            ? [{ borderColor: borderColors }, styles.outlined]
+            : [styles.text, { backgroundColor: backGroundColor }],
+          loading && [{ backgroundColor: backGroundColor }],
+          disabled && [styles.disabled, { backgroundColor: backGroundColor }],
         ]}
-        disabled={disabled}>
+        disabled={disabled}
+      >
         {leftIcon}
         <Text
           style={[
             styles.buttonText,
-            {color: textColor, paddingHorizontal: paddingHorizontal},
-          ]}>
+            { color: textColor, paddingHorizontal: paddingHorizontal },
+          ]}
+        >
           {label}
         </Text>
         {rightIcon}
@@ -90,32 +86,27 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     paddingVertical: 12,
     paddingHorizontal: 20,
-    alignSelf: 'flex-start',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
+    alignSelf: "flex-start",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
     marginVertical: 10,
   },
   buttonText: {
     fontSize: 16,
-    textAlign: 'center',
-    fontWeight:"600",
-    alignSelf: 'center',
+    textAlign: "center",
+    fontWeight: "600",
+    alignSelf: "center",
   },
   outlined: {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     borderWidth: 1,
   },
   disabled: {
     opacity: 0.4,
   },
-  text:{
-
-  },
-    solid: {
-        
-    },
+  text: {},
+  solid: {},
 });
-
 
 export default AppButton;
