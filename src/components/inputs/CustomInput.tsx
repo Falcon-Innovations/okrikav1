@@ -1,11 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import React, { FunctionComponent, useState } from "react";
 import { TextInput } from "react-native-paper";
-import styled from "styled-components/native";
 
 import { CustomInputProps, KeyboadType, Mode } from "./types";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { SIZES } from "../../constants";
+import { COLORS } from "../../constants/styles";
 
 const CustomInput: FunctionComponent<CustomInputProps> = ({
   label,
@@ -17,62 +15,36 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
   placeholder,
   mode = Mode.OUTLINED,
   keyboard = KeyboadType.DEFAULT,
-  mutliline,
+  multiline,
   iconLeft,
-  iconLibrary,
-  errors,
   iconName = "email-outline",
 }) => {
-  const [isFocused, setIsFocused] = useState(false);
   const [hidePassword, setHidePassword] = useState(secureTextEntry);
+  const [error, setError] = useState("");
 
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
+  const isEmailValid = () => email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  const isPasswordValid = () =>
+    password &&
+    !/(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+]).{8,}/.test(value);
 
-  const handleBlur = () => {
-    setIsFocused(false);
-  };
-
-  const handleValidation = () => {
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-      return "Invalid email address, Please enter a valid email address";
+  const getError = () => {
+    if (isEmailValid()) {
+      return "Invalid email address. Please enter a valid email address.";
     }
 
-    if (
-      password &&
-      !/(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+]).{8,}/.test(value)
-    ) {
-      return "Password must contain at least 8 characters including 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character";
+    if (isPasswordValid()) {
+      return "Password must contain at least 8 characters including 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.";
     }
 
     return "";
   };
 
-  const error = handleValidation();
-
-  const renderInputStyles = () => {
-    if (error) {
-      return {
-        borderColor: "red",
-      };
-    }
-    if (isFocused) {
-      return {
-        borderColor: "#234cdd",
-      };
-    }
-    return {
-      borderColor: "transparent",
-    };
+  const handleEndEditing = () => {
+    setError(getError());
   };
-
-  const inputStyles = renderInputStyles();
 
   return (
     <>
-      {(isFocused && error) ||
-        (error && <Text style={{ color: "red" }}>{error}</Text>)}
       <TextInput
         autoCapitalize="none"
         autoCorrect={false}
@@ -83,11 +55,10 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
         secureTextEntry={hidePassword}
         keyboardType={keyboard}
         placeholder={placeholder}
-        multiline={mutliline}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        style={[styles.inputContainer, inputStyles]}
-        placeholderTextColor={"#234cdd"}
+        multiline={multiline}
+        error={Boolean(error)}
+        style={styles.inputContainer}
+        placeholderTextColor={COLORS.textColor.text_color_100}
         left={
           iconLeft && (
             <TextInput.Icon icon={iconName} color="#234cdd" size={20} />
@@ -102,7 +73,9 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
             />
           )
         }
+        onEndEditing={handleEndEditing}
       />
+      {error && <Text style={styles.errorText}>{error}</Text>}
     </>
   );
 };
@@ -110,19 +83,18 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
 export default CustomInput;
 
 const styles = StyleSheet.create({
-  container: {
-    marginVertical: 8,
-  },
   inputContainer: {
     backgroundColor: "transparent",
     fontSize: 12,
-    fontFamily: "Poppins-Regular",
     color: "#234cdd",
     marginBottom: 12,
+    borderRadius: 5,
+    paddingHorizontal: 10,
   },
   errorText: {
-    color: "red",
+    color: COLORS.red.red_500,
     fontSize: 12,
-    fontFamily: "Poppins-Regular",
+    marginTop: 4,
+    marginBottom: 10,
   },
 });

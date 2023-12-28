@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { SafeAreaView, StyleSheet, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { SIZES } from "../../constants/styles";
 
 interface CustomScrollViewProps {
   children: ReactNode;
@@ -30,6 +31,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flexGrow: 1,
+    marginTop: SIZES.screenHeight * 0.08,
     paddingHorizontal: 20,
   },
   scrollViewContent: {

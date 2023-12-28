@@ -25,5 +25,5 @@ export interface CustomInputProps {
   password?: boolean;
   mode?: Mode;
   keyboard?: KeyboadType;
-  mutliline?: boolean;
+  multiline?: boolean;
 }

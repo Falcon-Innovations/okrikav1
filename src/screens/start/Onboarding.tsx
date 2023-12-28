@@ -18,12 +18,7 @@ import { COLORS } from "../../constants/styles";
 type Props = NativeStackScreenProps<AuthStackParamList, "Onboarding">;
 
 const Onboarding = ({ navigation }: Props) => {
-  const [showButton, setShowButton] = useState(true);
   type Item = (typeof onboardingSlides)[0];
-
-  const handleGetStarted = () => {
-    console.log("Get Started");
-  };
 
   const renderSlide = ({ item }: { item: any }) => (
     <View style={styles.slide}>
@@ -89,9 +84,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   title: {
-    fontSize: 24,
-    fontWeight: "bold",
+    fontSize: 18,
+    fontWeight: "700",
     marginBottom: 10,
+    color: COLORS.gray.gray_500,
   },
   message: {
     fontSize: 16,
