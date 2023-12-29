@@ -1,6 +1,7 @@
 import { StyleSheet, Text } from "react-native";
 import React, { FunctionComponent, useState } from "react";
 import { TextInput } from "react-native-paper";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons"; // Import MaterialCommunityIcons
 
 import { CustomInputProps, KeyboadType, Mode } from "./types";
 import { COLORS } from "../../constants/styles";
@@ -57,8 +58,9 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
         placeholder={placeholder}
         multiline={multiline}
         error={Boolean(error)}
-        style={styles.inputContainer}
+        style={[styles.inputContainer]}
         placeholderTextColor={COLORS.textColor.text_color_100}
+        theme={{ colors: { primary: COLORS.primary.primary_500 } }}
         left={
           iconLeft && (
             <TextInput.Icon icon={iconName} color="#234cdd" size={20} />
@@ -86,9 +88,9 @@ const styles = StyleSheet.create({
   inputContainer: {
     backgroundColor: "transparent",
     fontSize: 12,
-    color: "#234cdd",
-    marginBottom: 12,
-    borderRadius: 5,
+    color: COLORS.primary.primary_500,
+    marginBottom: 20,
+    borderRadius: 6,
     paddingHorizontal: 10,
   },
   errorText: {

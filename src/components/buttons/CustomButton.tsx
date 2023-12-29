@@ -33,13 +33,10 @@ const AppButton: React.FC<ButtonProps> = ({
   rightIcon,
   onPress,
   loading,
-  pressed,
   disabled,
   bgColor,
-  pressedColor,
   borderColor,
   textColors,
-  padding,
   width,
   height,
 }) => {

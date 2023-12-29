@@ -1,7 +1,14 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
-import { CustomInput, CustomScrollView } from "../../components";
+import {
+  CustomButton,
+  CustomInput,
+  CustomScrollView,
+  SocialMediaBtn,
+} from "../../components";
 import { COLORS } from "../../constants/styles";
+import { ButtonType } from "../../components/buttons/SocialMediaBtn";
+import { IMAGES } from "../../constants";
 
 const Login = () => {
   const [inputs, setInputs] = useState({
@@ -9,11 +16,22 @@ const Login = () => {
     password: "",
   });
 
+  // check all fields are filled
+  const isSignInDisabled = !inputs.emailAddress || !inputs.password;
+
+  // handle sign in
+  const handleSignIn = () => {
+    if (!isSignInDisabled) {
+      console.log("Email:", inputs.emailAddress);
+      console.log("Password:", inputs.password);
+    }
+  };
+
   return (
     <CustomScrollView>
       <View style={styles.loginText}>
         <Text style={styles.title}>Sign In</Text>
-        <Text style={styles.message}>Hi, Welcome back. We missed you</Text>
+        <Text style={styles.message}>Hi, Welcome back 👋. We missed you</Text>
       </View>
       <View style={{ marginTop: 20 }}>
         <CustomInput
@@ -31,6 +49,42 @@ const Login = () => {
           value={inputs?.password}
           onChangeText={(text) => setInputs({ ...inputs, password: text })}
         />
+        <TouchableOpacity style={styles.forgotPassView}>
+          <Text style={styles.forgotPassText}>Forgot Password?</Text>
+        </TouchableOpacity>
+        <View style={styles.loginBtn}>
+          <CustomButton
+            label="Sign In"
+            onPress={handleSignIn}
+            textColors="white"
+            disabled={isSignInDisabled}
+          />
+        </View>
+        <View style={styles.seperatorView}>
+          <View style={styles.seperator} />
+          <Text style={styles.seperatorText}>Or Login with</Text>
+          <View style={styles.seperator} />
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <SocialMediaBtn
+            label="Google"
+            onPress={() => console.log("Hello Google")}
+            type={ButtonType.OUTLINED}
+            image={IMAGES.google}
+          />
+          <SocialMediaBtn
+            label="Facebook"
+            onPress={() => console.log("Hello Facebook")}
+            type={ButtonType.SOLID}
+            image={IMAGES.facebook}
+          />
+        </View>
       </View>
     </CustomScrollView>
   );
@@ -60,5 +114,34 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     marginTop: 8,
     color: COLORS.textColor.text_color_300,
+  },
+  forgotPassView: {
+    alignItems: "flex-end",
+  },
+  forgotPassText: {
+    fontSize: 12,
+    fontWeight: "600",
+    color: COLORS.primary.primary_500,
+    textDecorationLine: "underline",
+  },
+  loginBtn: {
+    marginTop: 20,
+  },
+
+  seperatorView: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginVertical: 25,
+  },
+  seperatorText: {
+    fontSize: 14,
+    fontWeight: "700",
+    color: COLORS.textColor.text_color_500,
+  },
+  seperator: {
+    flex: 1,
+    height: 1,
+    backgroundColor: COLORS.gray.gray_100,
+    marginHorizontal: 10,
   },
 });
