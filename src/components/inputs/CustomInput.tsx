@@ -18,6 +18,7 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
   keyboard = KeyboadType.DEFAULT,
   multiline,
   iconLeft,
+  inputLabel,
   iconName = "email-outline",
 }) => {
   const [hidePassword, setHidePassword] = useState(secureTextEntry);
@@ -46,6 +47,9 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
 
   return (
     <>
+      <Text style={{ color: COLORS.textColor.text_color_500, marginBottom: 8 }}>
+        {inputLabel}
+      </Text>
       <TextInput
         autoCapitalize="none"
         autoCorrect={false}
@@ -71,7 +75,7 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
             <TextInput.Icon
               onPress={() => setHidePassword(!hidePassword)}
               icon={hidePassword ? "eye-off-outline" : "eye-outline"}
-              color="#234cdd"
+              color={COLORS.textColor.text_color_200}
             />
           )
         }
@@ -87,16 +91,16 @@ export default CustomInput;
 const styles = StyleSheet.create({
   inputContainer: {
     backgroundColor: "transparent",
-    fontSize: 12,
+    fontSize: 14,
     color: COLORS.primary.primary_500,
-    marginBottom: 20,
+    marginBottom: 10,
     borderRadius: 6,
+    borderColor: COLORS.textColor.text_color_100,
     paddingHorizontal: 10,
   },
   errorText: {
     color: COLORS.red.red_500,
     fontSize: 12,
-    marginTop: 4,
-    marginBottom: 10,
+    // marginVertical: 1,
   },
 });

@@ -48,7 +48,10 @@ const Onboarding = ({ navigation }: Props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity style={styles.skipButton}>
+      <TouchableOpacity
+        style={styles.skipButton}
+        onPress={() => navigation.replace("Login")}
+      >
         <Text style={styles.skipButtonText}>Skip</Text>
       </TouchableOpacity>
       <AppIntroSlider

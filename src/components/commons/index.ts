@@ -1,3 +1,4 @@
 import CustomScrollView from "./CustomScrollView";
+import Seperator from "./Seperator";
 
-export { CustomScrollView };
+export { CustomScrollView, Seperator };

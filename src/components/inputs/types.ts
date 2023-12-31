@@ -26,4 +26,5 @@ export interface CustomInputProps {
   mode?: Mode;
   keyboard?: KeyboadType;
   multiline?: boolean;
+  inputLabel?: string;
 }

@@ -4,35 +4,31 @@ import { useOnboardingStatus } from "../hooks";
 
 import { Onboarding, Register, Login } from "../screens";
 
-
 export type AuthStackParamList = {
-    Onboarding: undefined;
-    Register: undefined;
-    Login: undefined;
-
-}
+  Onboarding: undefined;
+  Register: undefined;
+  Login: undefined;
+};
 
 const AuthStack = createStackNavigator<AuthStackParamList>();
+
 const AuthNavigation = () => {
+  const { isFirstLaunch, isLoading } = useOnboardingStatus();
 
-    const {isFirstLaunch, isLoading} = useOnboardingStatus();
+  if (isLoading) return null;
 
-    if(isLoading) return null;
-
-
-    return (
-        <AuthStack.Navigator
-            initialRouteName={"Onboarding"}
-            screenOptions={{
-                headerShown: false
-            }}
-        >
-            <AuthStack.Screen name="Onboarding" component={Onboarding} />
-            <AuthStack.Screen name="Register" component={Register} />
-            <AuthStack.Screen name="Login" component={Login} />
-        </AuthStack.Navigator>
-    )
-}
+  return (
+    <AuthStack.Navigator
+      initialRouteName={isFirstLaunch ? "Onboarding" : "Login"}
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <AuthStack.Screen name="Onboarding" component={Onboarding} />
+      <AuthStack.Screen name="Register" component={Register} />
+      <AuthStack.Screen name="Login" component={Login} />
+    </AuthStack.Navigator>
+  );
+};
 
 export default AuthNavigation;
-

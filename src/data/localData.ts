@@ -1,5 +1,5 @@
 import { IMAGES } from "../constants";
-import { onboardingSlideType } from "../types/types";
+import { onboardingSlideType } from "../types/onboarding";
 
 export const onboardingSlides: onboardingSlideType[] = [
   {

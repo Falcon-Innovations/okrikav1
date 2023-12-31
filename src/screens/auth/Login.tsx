@@ -1,16 +1,28 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useState } from "react";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import {
   CustomButton,
   CustomInput,
   CustomScrollView,
   SocialMediaBtn,
 } from "../../components";
-import { COLORS } from "../../constants/styles";
+import { COLORS, SIZES } from "../../constants/styles";
 import { ButtonType } from "../../components/buttons/SocialMediaBtn";
 import { IMAGES } from "../../constants";
 
-const Login = () => {
+import { AuthStackParamList } from "../../navigation/AuthNavigation";
+import { Seperator } from "../../components/commons";
+
+type Props = NativeStackScreenProps<AuthStackParamList, "Login">;
+
+const Login = ({ navigation }: Props) => {
   const [inputs, setInputs] = useState({
     emailAddress: "",
     password: "",
@@ -28,65 +40,91 @@ const Login = () => {
   };
 
   return (
-    <CustomScrollView>
-      <View style={styles.loginText}>
-        <Text style={styles.title}>Sign In</Text>
-        <Text style={styles.message}>Hi, Welcome back 👋. We missed you</Text>
-      </View>
-      <View style={{ marginTop: 20 }}>
-        <CustomInput
-          placeholder="example@email.com"
-          email
-          label="Email Address"
-          value={inputs?.emailAddress}
-          onChangeText={(text) => setInputs({ ...inputs, emailAddress: text })}
-        />
-        <CustomInput
-          placeholder="***********"
-          secureTextEntry
-          label="Password"
-          password={true}
-          value={inputs?.password}
-          onChangeText={(text) => setInputs({ ...inputs, password: text })}
-        />
-        <TouchableOpacity style={styles.forgotPassView}>
-          <Text style={styles.forgotPassText}>Forgot Password?</Text>
-        </TouchableOpacity>
-        <View style={styles.loginBtn}>
-          <CustomButton
-            label="Sign In"
-            onPress={handleSignIn}
-            textColors="white"
-            disabled={isSignInDisabled}
-          />
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      style={{ backgroundColor: "#fff" }}
+    >
+      <CustomScrollView>
+        <View style={styles.loginText}>
+          <Text style={styles.title}>Sign In</Text>
+          <Text style={styles.message}>Hi, Welcome back 👋. We missed you</Text>
         </View>
-        <View style={styles.seperatorView}>
-          <View style={styles.seperator} />
-          <Text style={styles.seperatorText}>Or Login with</Text>
-          <View style={styles.seperator} />
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <SocialMediaBtn
-            label="Google"
-            onPress={() => console.log("Hello Google")}
-            type={ButtonType.OUTLINED}
-            image={IMAGES.google}
+        <View style={{ marginTop: 20 }}>
+          <CustomInput
+            placeholder="example@email.com"
+            inputLabel="Email Address"
+            email
+            value={inputs?.emailAddress}
+            onChangeText={(text) =>
+              setInputs({ ...inputs, emailAddress: text })
+            }
           />
-          <SocialMediaBtn
-            label="Facebook"
-            onPress={() => console.log("Hello Facebook")}
-            type={ButtonType.SOLID}
-            image={IMAGES.facebook}
+          <CustomInput
+            placeholder="***********"
+            secureTextEntry
+            inputLabel="Password"
+            password={true}
+            value={inputs?.password}
+            onChangeText={(text) => setInputs({ ...inputs, password: text })}
           />
+          <TouchableOpacity style={styles.forgotPassView}>
+            <Text style={styles.forgotPassText}>Forgot Password?</Text>
+          </TouchableOpacity>
+          <View style={styles.loginBtn}>
+            <CustomButton
+              label="Sign In"
+              onPress={handleSignIn}
+              textColors="white"
+              disabled={isSignInDisabled}
+            />
+          </View>
+
+          <Seperator text="or Login with" />
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <SocialMediaBtn
+              label="Google"
+              onPress={() => console.log("Hello Google")}
+              type={ButtonType.OUTLINED}
+              image={IMAGES.google}
+            />
+            <SocialMediaBtn
+              label="Facebook"
+              onPress={() => console.log("Hello Facebook")}
+              type={ButtonType.SOLID}
+              image={IMAGES.facebook}
+            />
+          </View>
+
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: SIZES.screenHeight * 0.05,
+            }}
+          >
+            <Text
+              style={{
+                color: COLORS.textColor.text_color_500,
+                fontSize: 14,
+                fontWeight: "600",
+              }}
+            >
+              Don't have an account?
+            </Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+              <Text style={styles.noAccount}>Sign Up</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </CustomScrollView>
+      </CustomScrollView>
+    </ScrollView>
   );
 };
 
@@ -128,20 +166,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 
-  seperatorView: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginVertical: 25,
-  },
-  seperatorText: {
-    fontSize: 14,
+  noAccount: {
+    fontSize: 16,
     fontWeight: "700",
-    color: COLORS.textColor.text_color_500,
-  },
-  seperator: {
-    flex: 1,
-    height: 1,
-    backgroundColor: COLORS.gray.gray_100,
-    marginHorizontal: 10,
+    color: COLORS.primary.primary_500,
+    marginLeft: 5,
+    textDecorationLine: "underline",
   },
 });

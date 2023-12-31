@@ -28,11 +28,13 @@ const CustomScrollView: React.FC<CustomScrollViewProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#fff",
   },
   contentContainer: {
     flexGrow: 1,
     marginTop: SIZES.screenHeight * 0.08,
     paddingHorizontal: 20,
+    paddingBottom: 25,
   },
   scrollViewContent: {
     flexGrow: 1,

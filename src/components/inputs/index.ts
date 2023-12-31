@@ -1,3 +1,5 @@
 import CustomInput from "./CustomInput";
+import CustomPhoneInput from "./CustomPhoneInput";
+import CheckBox from "./CheckBox";
 
-export { CustomInput };
+export { CustomInput, CustomPhoneInput, CheckBox };
