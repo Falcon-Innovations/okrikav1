@@ -14,14 +14,15 @@ import { COLORS, SIZES } from "../../constants/styles";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Searchbar } from "react-native-paper";
 import HomeCarousel from "./HomeCarousel";
-import { carouselData } from "../../data/localData";
+import { carouselData, categories } from "../../data/localData";
+import Categories from "./Categories";
 
 const HomeScreen = () => {
   const [search, setSearch] = React.useState<string>("");
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
   const [location, setLocation] = React.useState<Location.LocationObject>();
   const [errorMsg, setErrorMsg] = React.useState<string>("");
-  const [locationName, setLocationName] = React.useState<string>("");
+  const [locationName, setLocationName] = React.useState<string>();
 
   // Request user location
 
@@ -157,6 +158,11 @@ const HomeScreen = () => {
             </View>
             <View style={{ marginTop: 20 }}>
               <HomeCarousel data={carouselData} />
+            </View>
+
+            {/* //Categories */}
+            <View>
+              <Categories data={categories} />
             </View>
           </ScrollView>
         </KeyboardAwareScrollView>

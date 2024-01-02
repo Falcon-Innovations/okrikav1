@@ -1,22 +1,29 @@
-import "react-native-gesture-handler";
+import React, { useEffect, useState } from "react";
 import { PaperProvider } from "react-native-paper";
 import Navigation from "./src/navigation/Navigation";
-import { useFonts } from "expo-font";
+import { Loader } from "./src/components/commons";
 
 export default function App() {
-  const [loaded] = useFonts({
-    Lato_Black: require("./assets/fonts/Lato-Black.ttf"),
-    Lato_Bold: require("./assets/fonts/Lato-Bold.ttf"),
-    Lato_Regular: require("./assets/fonts/Lato-Regular.ttf"),
-  });
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(false);
 
-  if (!loaded) {
-    return null;
-  }
+  useEffect(() => {
+    // Simulate loading for 2 seconds
+    const loadingTimeout = setTimeout(() => {
+      setLoading(false);
+
+      // Simulate fetching user status
+      // You can replace this with your actual logic to get the user status
+      setUser(true); // Set to true for testing purposes, replace with actual logic
+    }, 6000);
+
+    // Clear the timeout if the component unmounts
+    return () => clearTimeout(loadingTimeout);
+  }, []);
 
   return (
     <PaperProvider>
-      <Navigation />
+      {loading ? <Loader visible={true} /> : <Navigation user={user} />}
     </PaperProvider>
   );
 }

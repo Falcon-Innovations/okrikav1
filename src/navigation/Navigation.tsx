@@ -5,9 +5,11 @@ import { navigationRef } from "./RootNavigation";
 import AuthNavigation from "./AuthNavigation";
 import MainNavigation from "./MainNavigation";
 
-const Navigation = () => {
-  const user = true;
+interface navigationProps {
+  user: boolean;
+}
 
+const Navigation: React.FC<navigationProps> = ({ user }) => {
   return (
     <NavigationContainer ref={navigationRef}>
       {user ? <MainNavigation /> : <AuthNavigation />}

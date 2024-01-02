@@ -1,4 +1,5 @@
 import { IMAGES } from "../constants";
+import { categoryTypes } from "../types/common";
 import { onboardingSlideType } from "../types/onboarding";
 
 export const onboardingSlides: onboardingSlideType[] = [
@@ -49,5 +50,51 @@ export const carouselData = [
     description: "Get a free delivery on your first purchase",
     image:
       "https://res.cloudinary.com/dsn9fbo1z/image/upload/v1704157141/medium-shot-women-clothes-shopping_jbbw3f-removebg-preview_rkwu14.png",
+  },
+  {
+    id: "4",
+    title: "New Collection",
+    description: "Get a free delivery on your first purchase",
+    image:
+      "https://res.cloudinary.com/dsn9fbo1z/image/upload/v1704157141/medium-shot-women-clothes-shopping_jbbw3f-removebg-preview_rkwu14.png",
+  },
+];
+
+export const categories = [
+  {
+    id: "1",
+    name: "Fashion",
+    image:
+      "https://res.cloudinary.com/dsn9fbo1z/image/upload/v1704231956/trendy-top-design-mockup-presented-wooden-hanger_t3je7o.jpg",
+  },
+  {
+    id: "2",
+    name: "Male Dresses",
+    image:
+      "https://res.cloudinary.com/dsn9fbo1z/image/upload/v1704231959/female-outfits-sunglasses-pair-sandal-travelling-bag_tfawnw.jpg",
+  },
+  {
+    id: "3",
+    name: "Shoes",
+    image:
+      "https://res.cloudinary.com/dsn9fbo1z/image/upload/v1704231953/fashion-shoes-sneakers_yyb6ut.jpg",
+  },
+  {
+    id: "4",
+    name: "Jackets",
+    image:
+      "https://res.cloudinary.com/dsn9fbo1z/image/upload/v1704232313/still-life-rendering-jackets-display_1_u3wxin.jpg",
+  },
+  {
+    id: "5",
+    name: "Trousers",
+    image:
+      "https://res.cloudinary.com/dsn9fbo1z/image/upload/v1704231956/trendy-top-design-mockup-presented-wooden-hanger_t3je7o.jpg",
+  },
+  {
+    id: "6",
+    name: "Electronics",
+    image:
+      "https://res.cloudinary.com/dsn9fbo1z/image/upload/v1704231959/female-outfits-sunglasses-pair-sandal-travelling-bag_tfawnw.jpg",
   },
 ];

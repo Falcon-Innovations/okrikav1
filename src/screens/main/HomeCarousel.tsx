@@ -1,8 +1,8 @@
 import { StyleSheet, View, FlatList } from "react-native";
 import React, { useRef, useEffect } from "react";
 
-import CarouselCard from "../../components/commons/CarouselCard";
-import { COLORS, SIZES } from "../../constants/styles";
+import { COLORS } from "../../constants/styles";
+import { CarouselCard } from "../../components/cards";
 
 interface CarouselProps {
   data: { id: string; title: string; description: string; image: string }[];
@@ -54,7 +54,7 @@ const HomeCarousel: React.FC<CarouselProps> = ({ data }) => {
             width: 8,
             height: 8,
             borderRadius: 4,
-            marginHorizontal: 4,
+            marginHorizontal: 3,
           }}
         />
       );
