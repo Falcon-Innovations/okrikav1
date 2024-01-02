@@ -6,9 +6,10 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import Icon from "react-native-vector-icons/Feather";
 import NotifyIcon from "react-native-vector-icons/Ionicons";
+import * as Location from "expo-location";
 import { COLORS, SIZES } from "../../constants/styles";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Searchbar } from "react-native-paper";
@@ -18,6 +19,41 @@ import { carouselData } from "../../data/localData";
 const HomeScreen = () => {
   const [search, setSearch] = React.useState<string>("");
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
+  const [location, setLocation] = React.useState<Location.LocationObject>();
+  const [errorMsg, setErrorMsg] = React.useState<string>("");
+  const [locationName, setLocationName] = React.useState<string>("");
+
+  // Request user location
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+
+      const { coords } = location;
+      const response = await fetch(
+        `https://api.opencagedata.com/geocode/v1/json?key=b7b5870b10124ad8bbe513e26f46fe88&q=${coords.latitude}+${coords.longitude}&pretty=1`
+      );
+      const data = await response.json();
+      if (data.results && data.results.length > 0) {
+        const { city, country } = data.results[0].components;
+        setLocationName(`${city}, ${country}`);
+      }
+    })();
+  }, []);
+
+  let text = "Waiting..";
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(locationName);
+  }
   return (
     <>
       <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
@@ -43,7 +79,7 @@ const HomeScreen = () => {
                     size={18}
                     color={COLORS.primary.primary_500}
                   />
-                  <Text style={styles.locationTeaxt}>Current Location</Text>
+                  <Text style={styles.locationTeaxt}>{text}</Text>
                   <TouchableOpacity>
                     <Icon
                       name="chevron-down"

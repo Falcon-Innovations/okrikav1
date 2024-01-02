@@ -83,7 +83,7 @@ export default CarouselCard;
 
 const styles = StyleSheet.create({
   carouselItemContainer: {
-    width: 300,
+    width: 320,
     height: 140,
     marginRight: 10,
     paddingRight: 10,
