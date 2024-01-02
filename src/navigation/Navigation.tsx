@@ -6,7 +6,7 @@ import AuthNavigation from "./AuthNavigation";
 import MainNavigation from "./MainNavigation";
 
 const Navigation = () => {
-  const user = false;
+  const user = true;
 
   return (
     <NavigationContainer ref={navigationRef}>

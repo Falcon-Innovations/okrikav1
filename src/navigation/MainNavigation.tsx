@@ -1,25 +1,23 @@
 import React from "react";
-
 import { createStackNavigator } from "@react-navigation/stack";
-
-import { HomeScreen } from "../screens";
+import MainTabNavigator from "./BottomTab";
 
 export type MainStackParamList = {
-    HomeScreen: undefined;
-}
+  MainTabs: undefined; // Replace HomeScreen with MainTabs
+};
 
 const MainStack = createStackNavigator<MainStackParamList>();
 
 const MainNavigation = () => {
-    return (
-        <MainStack.Navigator
-            screenOptions={{
-                headerShown: false
-            }}
-        >
-            <MainStack.Screen name="HomeScreen" component={HomeScreen} />
-        </MainStack.Navigator>
-    )
-}
+  return (
+    <MainStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <MainStack.Screen name="MainTabs" component={MainTabNavigator} />
+    </MainStack.Navigator>
+  );
+};
 
 export default MainNavigation;

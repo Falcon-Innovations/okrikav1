@@ -1,7 +1,21 @@
 import Onboarding from "./start";
 
-import { Register,Login } from "./auth";
+import { Register, Login } from "./auth";
 
-import { HomeScreen } from "./home";
+import { HomeScreen } from "./main";
 
-export { Onboarding, Register, HomeScreen,Login };
+import CartScreen from "./cart/CartScreen";
+
+import Messages from "./messages/Messages";
+
+import FouriteScreen from "./favourite/FavouriteScreen";
+
+export {
+  Onboarding,
+  Register,
+  HomeScreen,
+  Login,
+  CartScreen,
+  Messages,
+  FouriteScreen,
+};

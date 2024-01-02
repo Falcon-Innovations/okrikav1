@@ -27,3 +27,27 @@ export const onboardingSlides: onboardingSlideType[] = [
     image: IMAGES.onboard4,
   },
 ];
+
+export const carouselData = [
+  {
+    id: "1",
+    title: "New Collection",
+    description: "Get a free delivery on your first purchase",
+    image:
+      "https://res.cloudinary.com/dsn9fbo1z/image/upload/v1704157141/medium-shot-women-clothes-shopping_jbbw3f-removebg-preview_rkwu14.png",
+  },
+  {
+    id: "2",
+    title: "New Collection",
+    description: "Get a free delivery on your first purchase",
+    image:
+      "https://res.cloudinary.com/dsn9fbo1z/image/upload/v1704157141/medium-shot-women-clothes-shopping_jbbw3f-removebg-preview_rkwu14.png",
+  },
+  {
+    id: "3",
+    title: "New Collection",
+    description: "Get a free delivery on your first purchase",
+    image:
+      "https://res.cloudinary.com/dsn9fbo1z/image/upload/v1704157141/medium-shot-women-clothes-shopping_jbbw3f-removebg-preview_rkwu14.png",
+  },
+];
