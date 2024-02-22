@@ -5,7 +5,7 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 
 import { COLORS, SIZES } from "../../constants/styles";
 import { CategoryView } from "../../components/commons";

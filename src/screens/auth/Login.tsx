@@ -40,91 +40,84 @@ const Login = ({ navigation }: Props) => {
   };
 
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      style={{ backgroundColor: "#fff" }}
-    >
-      <CustomScrollView>
-        <View style={styles.loginText}>
-          <Text style={styles.title}>Sign In</Text>
-          <Text style={styles.message}>Hi, Welcome back 👋. We missed you</Text>
+    <CustomScrollView>
+      <View style={styles.loginText}>
+        <Text style={styles.title}>Sign In</Text>
+        <Text style={styles.message}>Hi, Welcome back 👋. We missed you</Text>
+      </View>
+      <View style={{ marginTop: 20 }}>
+        <CustomInput
+          placeholder="example@email.com"
+          inputLabel="Email Address"
+          email
+          value={inputs?.emailAddress}
+          onChangeText={(text) => setInputs({ ...inputs, emailAddress: text })}
+        />
+        <CustomInput
+          placeholder="***********"
+          secureTextEntry
+          inputLabel="Password"
+          password={true}
+          value={inputs?.password}
+          onChangeText={(text) => setInputs({ ...inputs, password: text })}
+        />
+        <TouchableOpacity style={styles.forgotPassView}>
+          <Text style={styles.forgotPassText}>Forgot Password?</Text>
+        </TouchableOpacity>
+        <View style={styles.loginBtn}>
+          <CustomButton
+            label="Sign In"
+            onPress={handleSignIn}
+            textColors="white"
+            disabled={isSignInDisabled}
+          />
         </View>
-        <View style={{ marginTop: 20 }}>
-          <CustomInput
-            placeholder="example@email.com"
-            inputLabel="Email Address"
-            email
-            value={inputs?.emailAddress}
-            onChangeText={(text) =>
-              setInputs({ ...inputs, emailAddress: text })
-            }
+
+        <Seperator text="or Login with" />
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <SocialMediaBtn
+            label="Google"
+            onPress={() => console.log("Hello Google")}
+            type={ButtonType.OUTLINED}
+            image={IMAGES.google}
           />
-          <CustomInput
-            placeholder="***********"
-            secureTextEntry
-            inputLabel="Password"
-            password={true}
-            value={inputs?.password}
-            onChangeText={(text) => setInputs({ ...inputs, password: text })}
+          <SocialMediaBtn
+            label="Facebook"
+            onPress={() => console.log("Hello Facebook")}
+            type={ButtonType.SOLID}
+            image={IMAGES.facebook}
           />
-          <TouchableOpacity style={styles.forgotPassView}>
-            <Text style={styles.forgotPassText}>Forgot Password?</Text>
+        </View>
+
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: SIZES.screenHeight * 0.05,
+          }}
+        >
+          <Text
+            style={{
+              color: COLORS.textColor.text_color_500,
+              fontSize: 14,
+              fontWeight: "600",
+            }}
+          >
+            Don't have an account?
+          </Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+            <Text style={styles.noAccount}>Sign Up</Text>
           </TouchableOpacity>
-          <View style={styles.loginBtn}>
-            <CustomButton
-              label="Sign In"
-              onPress={handleSignIn}
-              textColors="white"
-              disabled={isSignInDisabled}
-            />
-          </View>
-
-          <Seperator text="or Login with" />
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <SocialMediaBtn
-              label="Google"
-              onPress={() => console.log("Hello Google")}
-              type={ButtonType.OUTLINED}
-              image={IMAGES.google}
-            />
-            <SocialMediaBtn
-              label="Facebook"
-              onPress={() => console.log("Hello Facebook")}
-              type={ButtonType.SOLID}
-              image={IMAGES.facebook}
-            />
-          </View>
-
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-              marginTop: SIZES.screenHeight * 0.05,
-            }}
-          >
-            <Text
-              style={{
-                color: COLORS.textColor.text_color_500,
-                fontSize: 14,
-                fontWeight: "600",
-              }}
-            >
-              Don't have an account?
-            </Text>
-            <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-              <Text style={styles.noAccount}>Sign Up</Text>
-            </TouchableOpacity>
-          </View>
         </View>
-      </CustomScrollView>
-    </ScrollView>
+      </View>
+    </CustomScrollView>
   );
 };
 

@@ -56,144 +56,139 @@ const Register = ({ navigation }: Props) => {
 
   return (
     <>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={{ backgroundColor: "#fff" }}
-      >
-        <CustomScrollView>
-          <View style={styles.loginText}>
-            <Text style={styles.title}>Create An Account</Text>
-            <Text style={styles.message}>
-              Please fill the information below or register with your social
-              media account
-            </Text>
-          </View>
-          <View style={{ marginTop: 20 }}>
-            <CustomInput
-              placeholder="Full Name"
-              inputLabel="Full Name"
-              value={inputs?.fullName}
-              onChangeText={(text) => setInputs({ ...inputs, fullName: text })}
+      <CustomScrollView>
+        <View style={styles.loginText}>
+          <Text style={styles.title}>Create An Account</Text>
+          <Text style={styles.message}>
+            Please fill the information below or register with your social media
+            account
+          </Text>
+        </View>
+        <View style={{ marginTop: 20 }}>
+          <CustomInput
+            placeholder="Full Name"
+            inputLabel="Full Name"
+            value={inputs?.fullName}
+            onChangeText={(text) => setInputs({ ...inputs, fullName: text })}
+          />
+          <CustomInput
+            placeholder="example@email.com"
+            inputLabel="Email Address"
+            email
+            value={inputs?.emailAddress}
+            onChangeText={(text) =>
+              setInputs({ ...inputs, emailAddress: text })
+            }
+          />
+          <CustomPhoneInput
+            phoneInput={phoneInput}
+            value={inputs?.phoneNumber}
+            inputLabel="Phone Number"
+            onChangeFormattedText={(text) =>
+              setInputs({ ...inputs, phoneNumber: text })
+            }
+          />
+          <CustomInput
+            placeholder="***********"
+            secureTextEntry
+            inputLabel="Password"
+            password={true}
+            value={inputs?.password}
+            onChangeText={(text) => setInputs({ ...inputs, password: text })}
+          />
+          <CustomInput
+            placeholder="***********"
+            secureTextEntry
+            inputLabel="Confirm Password"
+            password={true}
+            value={inputs?.confirmPassword}
+            onChangeText={(text) =>
+              setInputs({ ...inputs, confirmPassword: text })
+            }
+          />
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              alignSelf: "flex-start",
+            }}
+          >
+            <CheckBox
+              isChecked={checked}
+              onPress={() => setChecked(!checked)}
             />
-            <CustomInput
-              placeholder="example@email.com"
-              inputLabel="Email Address"
-              email
-              value={inputs?.emailAddress}
-              onChangeText={(text) =>
-                setInputs({ ...inputs, emailAddress: text })
-              }
-            />
-            <CustomPhoneInput
-              phoneInput={phoneInput}
-              value={inputs?.phoneNumber}
-              inputLabel="Phone Number"
-              onChangeFormattedText={(text) =>
-                setInputs({ ...inputs, phoneNumber: text })
-              }
-            />
-            <CustomInput
-              placeholder="***********"
-              secureTextEntry
-              inputLabel="Password"
-              password={true}
-              value={inputs?.password}
-              onChangeText={(text) => setInputs({ ...inputs, password: text })}
-            />
-            <CustomInput
-              placeholder="***********"
-              secureTextEntry
-              inputLabel="Confirm Password"
-              password={true}
-              value={inputs?.confirmPassword}
-              onChangeText={(text) =>
-                setInputs({ ...inputs, confirmPassword: text })
-              }
-            />
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                alignSelf: "flex-start",
-              }}
-            >
-              <CheckBox
-                isChecked={checked}
-                onPress={() => setChecked(!checked)}
-              />
-              <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <Text>Agree with</Text>
-                <TouchableOpacity>
-                  <Text
-                    style={{
-                      fontSize: 14,
-                      fontWeight: "700",
-                      color: COLORS.primary.primary_500,
-                      textDecorationLine: "underline",
-                      marginLeft: 5,
-                    }}
-                  >
-                    Terms & Conditions
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-
-            <View style={styles.loginBtn}>
-              <CustomButton
-                label="Sign Up"
-                onPress={handleSignIn}
-                textColors="white"
-                disabled={isSignInDisabled}
-              />
-            </View>
-
-            <Seperator text="or Login with" />
-
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <SocialMediaBtn
-                label="Google"
-                onPress={() => console.log("Hello Google")}
-                type={ButtonType.OUTLINED}
-                image={IMAGES.google}
-              />
-              <SocialMediaBtn
-                label="Facebook"
-                onPress={() => console.log("Hello Facebook")}
-                type={ButtonType.SOLID}
-                image={IMAGES.facebook}
-              />
-            </View>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-                marginTop: SIZES.screenHeight * 0.05,
-              }}
-            >
-              <Text
-                style={{
-                  color: COLORS.textColor.text_color_500,
-                  fontSize: 14,
-                  fontWeight: "600",
-                }}
-              >
-                Do you have an account?
-              </Text>
-              <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-                <Text style={styles.noAccount}>Sign In</Text>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Text>Agree with</Text>
+              <TouchableOpacity>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    fontWeight: "700",
+                    color: COLORS.primary.primary_500,
+                    textDecorationLine: "underline",
+                    marginLeft: 5,
+                  }}
+                >
+                  Terms & Conditions
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
-        </CustomScrollView>
-      </ScrollView>
+
+          <View style={styles.loginBtn}>
+            <CustomButton
+              label="Sign Up"
+              onPress={handleSignIn}
+              textColors="white"
+              disabled={isSignInDisabled}
+            />
+          </View>
+
+          <Seperator text="or Login with" />
+
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <SocialMediaBtn
+              label="Google"
+              onPress={() => console.log("Hello Google")}
+              type={ButtonType.OUTLINED}
+              image={IMAGES.google}
+            />
+            <SocialMediaBtn
+              label="Facebook"
+              onPress={() => console.log("Hello Facebook")}
+              type={ButtonType.SOLID}
+              image={IMAGES.facebook}
+            />
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: SIZES.screenHeight * 0.05,
+            }}
+          >
+            <Text
+              style={{
+                color: COLORS.textColor.text_color_500,
+                fontSize: 14,
+                fontWeight: "600",
+              }}
+            >
+              Do you have an account?
+            </Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+              <Text style={styles.noAccount}>Sign In</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </CustomScrollView>
     </>
   );
 };

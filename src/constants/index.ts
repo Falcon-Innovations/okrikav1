@@ -1,4 +1,4 @@
-import SIZES from "./styles";
+import { SIZES } from "./styles";
 import { IMAGES } from "./images";
 
 export { SIZES, IMAGES };

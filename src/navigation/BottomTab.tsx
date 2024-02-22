@@ -73,10 +73,11 @@ const MainTabNavigator = () => {
           height: 65,
           alignItems: "center",
           alignContent: "center",
+          justifyContent: "center",
         },
         tabBarIconStyle: {
           width: 20,
-          height: 209,
+          height: 208,
         },
         headerShadowVisible: false,
       }}

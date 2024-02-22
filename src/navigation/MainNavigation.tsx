@@ -16,6 +16,7 @@ const MainNavigation = () => {
       }}
     >
       <MainStack.Screen name="MainTabs" component={MainTabNavigator} />
+      
     </MainStack.Navigator>
   );
 };
