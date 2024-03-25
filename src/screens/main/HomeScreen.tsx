@@ -16,6 +16,8 @@ import { Searchbar } from "react-native-paper";
 import HomeCarousel from "./HomeCarousel";
 import { carouselData, categories } from "../../data/localData";
 import Categories from "./Categories";
+import Categoriesgif from "./Categoriesgif";
+import App from "./MasonryList";
 
 const HomeScreen = () => {
   const [search, setSearch] = React.useState<string>("");
@@ -163,6 +165,8 @@ const HomeScreen = () => {
             {/* //Categories */}
             <View>
               <Categories data={categories} />
+              <Categoriesgif />
+              <App/>
             </View>
           </ScrollView>
         </KeyboardAwareScrollView>

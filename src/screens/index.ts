@@ -3,7 +3,6 @@ import Onboarding from "./start";
 import { Register, Login } from "./auth";
 
 import { HomeScreen } from "./main";
-
 import CartScreen from "./cart/CartScreen";
 
 import Messages from "./messages/Messages";

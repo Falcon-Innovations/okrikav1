@@ -98,3 +98,34 @@ export const categories = [
       "https://res.cloudinary.com/dsn9fbo1z/image/upload/v1704231959/female-outfits-sunglasses-pair-sandal-travelling-bag_tfawnw.jpg",
   },
 ];
+
+interface MasonryList {
+  id: string;
+  imgURL: string;
+  name: string;
+}
+
+export const data: MasonryList[] = [
+  {
+    id: '1',
+    imgURL: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dCUyMHNoaXJ0fGVufDB8fDB8fHww',
+    name: 'T-shirt',
+  },
+  {
+    id: '2',
+    imgURL: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGVub3ZvJTIwbGFwdG9wfGVufDB8fDB8fHww',
+    name: 'Laptop'
+    
+  },
+  {
+    id: '3',
+    imgURL: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFnfGVufDB8fDB8fHww',
+    name: 'Hand Bag',
+  },
+  {
+    id: '4',
+    imgURL: 'https://images.unsplash.com/photo-1637069585336-827b298fe84a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGplYW5zfGVufDB8fDB8fHww',
+    name: 'Jeans'
+    
+  }
+];
