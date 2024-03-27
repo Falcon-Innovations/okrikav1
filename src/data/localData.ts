@@ -99,13 +99,13 @@ export const categories = [
   },
 ];
 
-interface MasonryList {
-  id: string;
-  imgURL: string;
-  name: string;
-}
+// interface MasonryList {
+//   id: string;
+//   imgURL: string;
+//   name: string;
+// }
 
-export const data: MasonryList[] = [
+export const MasonryListData = [
   {
     id: '1',
     imgURL: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dCUyMHNoaXJ0fGVufDB8fDB8fHww',
@@ -124,6 +124,18 @@ export const data: MasonryList[] = [
   },
   {
     id: '4',
+    imgURL: 'https://images.unsplash.com/photo-1637069585336-827b298fe84a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGplYW5zfGVufDB8fDB8fHww',
+    name: 'Jeans'
+    
+  },
+  {
+    id: '5',
+    imgURL: 'https://images.unsplash.com/photo-1637069585336-827b298fe84a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGplYW5zfGVufDB8fDB8fHww',
+    name: 'Jeans'
+    
+  },
+  {
+    id: '6',
     imgURL: 'https://images.unsplash.com/photo-1637069585336-827b298fe84a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGplYW5zfGVufDB8fDB8fHww',
     name: 'Jeans'
     

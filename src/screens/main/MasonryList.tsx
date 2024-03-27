@@ -1,69 +1,114 @@
-import React, { FC, ReactElement, useMemo } from 'react';
-import { data } from '../../data/localData';
+import React, { FC, useMemo } from 'react';
 import {
   SafeAreaView,
-  StatusBar,
   Text,
   View,
   Image,
-  useColorScheme,
+  StyleSheet,
+
 } from 'react-native';
-import MasonryList from 'reanimated-masonry-list';
+import MasonryListComponent from 'reanimated-masonry-list';
+import { MasonryListData } from '../../data/localData';
+import Icon from "react-native-vector-icons/Feather";
+import { COLORS } from '../../constants/styles';
 
 
 
-const MasonryCard: FC<{ item: MasonryList }> = ({ item }) => {
+
+interface MasonryCardProps {
+  item: typeof MasonryListData[number];
+}
+
+const MasonryCard: FC<MasonryCardProps> = ({ item }) => {
   const randomBool = useMemo(() => Math.random() < 0.5, []);
 
   return (
-    <View key={item.id} style={{ marginTop: 12, flex: 1 }}>
+    <View key={item.id} style={{ marginTop: 12, flex: 1, }}>
       <Image
         source={{ uri: item.imgURL }}
         style={{
-          height: 200,
-          width:80,
+          height: 169,
+          width: 150,
           alignSelf: 'stretch',
-          borderRadius:3,
-          margin:10
+          borderRadius: 6,
+          
         }}
         resizeMode="cover"
+
+
       />
-      {/* <Text style={{ marginTop: 8 }}>{item.name}</Text> */}
+        <View
+          style={{
+            backgroundColor: '#fff',
+            borderRadius: 100,
+            height: 32,
+            aspectRatio: 1,
+            alignItems: "center",
+            justifyContent: "center",
+            position:'absolute',
+            top:6,
+            right:23
+            
+          }}
+        >
+          <Icon
+            name="heart"
+            size={20}
+            color={COLORS.black}
+          />
+        </View>
+      <View style={{ flexDirection: "row", gap: 8, padding: 4 }}>
+        <Text
+          style={{
+            flex: 1,
+            fontSize: 16,
+            fontWeight: "600",
+            color: COLORS.primary.primary_500,
+            textShadowOffset: {
+              height: 1,
+              width: 0,
+            },
+            textShadowRadius: 4,
+          }}
+        >
+          {item.name}
+        </Text>
+       
+
+      </View>
+
     </View>
   );
 };
 
-
-
-const renderItem = ({
-  item,
-}: {
-  item: MasonryList;
-  index?: number;
-}): ReactElement => {
-  return <MasonryCard item={item} />;
-};
+const renderItem: ({ item, index }:
+  { item: typeof MasonryListData[number], index: number }) =>
+  React.ReactElement = ({ item, index }) => {
+    return <MasonryCard item={item} />;
+  };
 
 const App: FC = () => {
-  const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <SafeAreaView>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <MasonryList
-        keyExtractor={(item: MasonryList): string => item.id}
+    <SafeAreaView style={{ flex: 1 }}>
+
+      <MasonryListComponent
+        keyExtractor={(item: typeof MasonryListData[number]) => item.id}
         ListHeaderComponent={<View />}
         contentContainerStyle={{
           paddingHorizontal: 24,
           alignSelf: 'stretch',
-          
         }}
         numColumns={2}
-        data={data}
+        data={MasonryListData}
         renderItem={renderItem}
+        
       />
+
+
     </SafeAreaView>
   );
 };
 
 export default App;
+
